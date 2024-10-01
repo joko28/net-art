@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Frames of Reflection</title>
+    <link
+      <link
+      href="https://fonts.googleapis.com/css2?family=Acme&family=Merienda:wght@300..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
@@ -30,7 +35,20 @@
 
         <a href="favorites.html" class="view-favorites-link">View Favorites</a>
       </div>
-    </main>
+
+    <!-- Comment Section -->
+    <div id="comment-section">
+      <h3>Share Your Poetry</h3>
+      <form id="poetryForm">
+        <textarea id="poemInput" rows="4" placeholder="Write your poem here..." required></textarea>
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+      <div id="submittedPoems"></div>
+    </div>
+  </div>
+</main>
+
 
     <footer>
       © 2024 Frames of Reflection | <a href="index.html">Home</a> |

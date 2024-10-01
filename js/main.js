@@ -110,3 +110,22 @@ function getAltText(index) {
 document
   .getElementById("randomizeBtn")
   .addEventListener("click", showRandomPhotoPoem);
+
+document
+  .getElementById("poetryForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const poemInput = document.getElementById("poemInput");
+    const submittedPoemsContainer = document.getElementById("submittedPoems");
+
+    // Create a new paragraph for the submitted poem
+    const newPoem = document.createElement("p");
+    newPoem.textContent = poemInput.value;
+
+    // Add the new poem to the submitted poems section
+    submittedPoemsContainer.appendChild(newPoem);
+
+    // Clear the textarea for new input
+    poemInput.value = "";
+  });
