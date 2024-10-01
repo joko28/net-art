@@ -2,11 +2,21 @@
 
 // Arrays of image paths and poems
 const images = [
-  "images/mushroom-640.jpg",
-  "images/birds-640.jpg",
-  "images/trees-640.jpg",
-  "images/mountain-640.jpg",
-  "images/sunset-640.jpg",
+  "images/mushroom-forest-moss-640.jpg",
+  "images/birds-branch-640.jpg",
+  "images/trees-lake-sunrise-640.jpg",
+  "images/water-lake-640.jpg",
+  "images/trees-fall-640.jpg",
+  "images/pink-cherry-blossoms-640.jpg",
+  "images/mountains-alps-meadow-640.jpg",
+  "images/mountains-alps-640.jpg",
+  "images/lake-thun-mountains-640.jpg",
+  "images/grass-dewdrop-640.jpg",
+  "images/forest-snow-winter-640.jpg",
+  "images/flowers-chamomile-640.jpg",
+  "images/field-sunrise-640.jpg",
+  "images/beach-waves-640.jpg",
+  "images/avenue-trees-path-640.jpg",
   // Add more image paths as needed
 ];
 
@@ -16,6 +26,16 @@ const poems = [
   "Morning dew on petals, sunlight breaks through the nettles.",
   "Silent forests speak, secrets hide in every creek.",
   "Stars align above, a symphony of endless love.",
+  "Shadows dance beneath the trees, carried softly by the breeze.",
+  "Waves kiss the shore with gentle grace, as stars reflect the ocean’s face.",
+  "The forest hums with twilight song, a place where whispers still belong.",
+  "Under the silver moon’s soft glow, the night awakens, calm and slow.",
+  "The dawn breaks through the misty haze, painting the sky with golden rays.",
+  "Raindrops tap on leaves above, a lullaby of nature’s love.",
+  "The river flows, both wild and free, whispering secrets to the trees.",
+  "Beneath the stars, the night is still, while mountains rest, majestic, chill.",
+  "Breezes weave through meadows green, where flowers bloom in sunlight’s sheen.",
+  "Moonlight drips through ancient pines, a symphony of quiet signs.",
   // Add more poems as needed
 ];
 

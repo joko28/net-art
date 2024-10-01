@@ -1,18 +1,26 @@
-/* styles.css */
-
-body {
-  font-family: "Lora", serif;
-  background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
-  color: #333;
-  text-align: center;
+/* Reset some default browser styles */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+/* Set the body to use Flexbox */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure body takes at least the full viewport height */
+  font-family: "Lora", Serif;
+  background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+  color: #333;
+}
+
+/* Header Styling */
 header {
   padding: 20px 0;
   background-color: #6c5ce7;
   color: white;
+  text-align: center;
 }
 
 header h1 {
@@ -20,11 +28,16 @@ header h1 {
   font-size: 2.5em;
 }
 
+/* Main Content Styling */
+main {
+  flex: 1; /* Allows main to grow and take up available space */
+}
+
 .container {
   padding: 50px 20px;
+  text-align: center;
 }
-<------------------------------------------------>
-/* RANDOMIZE IMAGE & POEM TEXT */
+
 #randomImage {
   max-width: 80%;
   height: auto;
@@ -39,8 +52,7 @@ header h1 {
   font-style: italic;
   color: #555;
 }
-<------------------------------------------------>
-/* RANDOMIZER BUTTON */
+
 #randomizeBtn {
   padding: 10px 20px;
   font-size: 16px;
@@ -56,8 +68,7 @@ header h1 {
 #randomizeBtn:hover {
   background-color: #a29bfe;
 }
-<------------------------------------------------>
-/* FAVORITE BUTTON */
+
 #saveFavoriteBtn {
   padding: 8px 16px;
   font-size: 14px;
@@ -86,8 +97,8 @@ header h1 {
 .view-favorites-link:hover {
   color: #a29bfe;
 }
-<------------------------------------------------>
-/* FOOTER */
+
+/* Footer Styling */
 footer {
   text-align: center;
   padding: 20px 0;
@@ -105,23 +116,29 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
-<------------------------------------------------>
-/* FAVORITES PAGE STYLES */
+
+/* Favorites Page Styles */
 .favorites-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
   padding: 20px;
+  justify-items: center; /* Centers items horizontally within their grid area */
 }
 
 .favorite-pair {
   border: 1px solid #ccc;
   border-radius: 10px;
-  margin: 10px;
   padding: 10px;
-  width: 300px;
+  width: 100%; /* Changed to 100% to fit within grid cells */
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   background-color: white;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.favorite-pair:hover {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
 }
 
 .favorite-pair img {
@@ -146,14 +163,15 @@ footer a:hover {
   border-radius: 5px;
   margin: 20px auto;
   display: block;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #clearFavoritesBtn:hover {
   background-color: #e17055;
+  transform: scale(1.05);
 }
-<------------------------------------------------>
-/* FADE EFFECTS */
+
+/* Fade Effects */
 .fade-out {
   opacity: 0;
   transition: opacity 0.5s ease-out;
@@ -163,8 +181,8 @@ footer a:hover {
   opacity: 1;
   transition: opacity 0.5s ease-in;
 }
-<------------------------------------------------>
-/* RESPONSIVE DESIGN */
+
+/* Responsive Design */
 @media (max-width: 768px) {
   header h1 {
     font-size: 2em;
@@ -211,9 +229,7 @@ footer a:hover {
   }
 }
 
-<------------------------------------------------>
-
-/* COVER PAGE STYLES */
+/* Cover Page Styles */
 .cover-section {
   max-width: 800px;
   margin: 100px auto;
