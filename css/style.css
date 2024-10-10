@@ -30,27 +30,6 @@ header h1 {
   font-size: 2.5em;
 }
 
-/* Artist Statement Section */
-#artist-statement {
-  padding: 40px;
-  margin: 0 auto;
-  max-width: 800px;
-  line-height: 1.8;
-  color: #333;
-}
-
-#artist-statement h2 {
-  font-size: 1.8rem;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-#artist-statement p {
-  margin-bottom: 20px;
-  font-size: 1.1rem;
-  text-align: justify;
-}
-
 /* Comment Section Styles */
 #comment-section {
   margin-top: 40px;
