@@ -1,6 +1,6 @@
 // js/main.js
 
-// Arrays of image paths and poems
+// Arrays of image paths and quotes
 const images = [
   "images/mushroom-forest-moss-640.jpg",
   "images/birds-branch-640.jpg",
@@ -20,7 +20,7 @@ const images = [
   // Add more image paths as needed
 ];
 
-const poems = [
+const quotes = [
   "I believe we are here on the planet Earth to live, grow up and do what we can to make this world a better place for all people to enjoy freedom. — Rosa Parks",
   "To love oneself is the beginning of a lifelong romance. — Oscar Wilde",
   "Sometimes the most important thing in a whole day is the rest we take between two deep breaths. — Etty Hillesum",
@@ -31,7 +31,6 @@ const poems = [
   "You’re braver than you believe, and stronger than you seem, and smarter than you think. — A.A. Mine",
   "You are the sum total of everything you've ever seen, heard, eaten, smelled, been told, forgot—it's all there. Everything influences each of us, and because of that I try to make sure that my experiences are positive. — Maya Angelou",
   "Sometimes, when things are falling apart, they may actually be falling into place. — Unknown",
-  "You’re braver than you believe, and stronger than you seem, and smarter than you think. — A.A. Mine",
   "Find out who you are and do it on purpose. — Dolly Parton",
   "My mama always said, life is like a box of chocolates. You never know what you're gonna get. — Forrest Gump",
   "It's your outlook on life that counts. If you take yourself lightly and don't take yourself too seriously, pretty soon you can find the humor in our everyday lives. And sometimes it can be a lifesaver. — Betty White",
@@ -70,7 +69,7 @@ const poems = [
   "Courage doesn't always roar. Sometimes courage is the little voice at the end of the day that says I'll try again tomorrow. — Mary Anne Radmacher",
   "It is not the strength of the body that counts, but the strength of the spirit. — J.R.R. Tolkien",
   "Courage is being scared to death, but saddling up anyway. — John Wayne",
-  "Real courage is doing the right thing when nobody's looking. Doing the unpopular thing because it's what you believe, and the heck with everybody. —  Justin Cronin",
+  "Real courage is doing the right thing when nobody's looking. Doing the unpopular thing because it's what you believe, and the heck with everybody. — Justin Cronin",
   "It's your life; you don't need someone's permission to live the life you want. Be brave to live from your heart. — Roy T. Bennett, The Light in the Heart",
   "It's kind of fun to do the impossible. — Walt Disney",
   "When you believe in a thing, believe in it all the way, implicitly and unquestionable. — Walt Disney",
@@ -121,12 +120,12 @@ const poems = [
   "Success is only meaningful and enjoyable if it feels like your own. - Michelle Obama",
   "If life were predictable it would cease to be life, and be without flavor. - Eleanor Roosevelt",
   "The big lesson in life, baby, is never be scared of anyone or anything. - Frank Sinatra",
-  // Add more poems as needed
+  // Add more quotes as needed
 ];
 
 // Variables to keep track of current indices
 let currentImageIndex = 0;
-let currentPoemIndex = 0;
+let currentQuoteIndex = 0;
 
 // Function to get a random index different from the current one
 function getRandomIndex(arrayLength, currentIndex) {
@@ -139,18 +138,18 @@ function getRandomIndex(arrayLength, currentIndex) {
   return newIndex;
 }
 
-// Function to show a new random image and poem
-function showRandomPhotoPoem() {
+// Function to show a new random image and quote
+function showRandomPhotoQuote() {
   // Get new indices
   const newImageIndex = getRandomIndex(images.length, currentImageIndex);
-  const newPoemIndex = getRandomIndex(poems.length, currentPoemIndex);
+  const newQuoteIndex = getRandomIndex(quotes.length, currentQuoteIndex);
 
   const imgElement = document.getElementById("randomImage");
-  const poemElement = document.getElementById("poemText");
+  const quoteElement = document.getElementById("quoteText");
 
   // Add fade-out class
   imgElement.classList.add("fade-out");
-  poemElement.classList.add("fade-out");
+  quoteElement.classList.add("fade-out");
 
   // After fade-out transition
   setTimeout(() => {
@@ -159,20 +158,20 @@ function showRandomPhotoPoem() {
     imgElement.alt = getAltText(newImageIndex);
     currentImageIndex = newImageIndex;
 
-    // Update poem
-    poemElement.textContent = poems[newPoemIndex];
-    currentPoemIndex = newPoemIndex;
+    // Update quote
+    quoteElement.textContent = quotes[newQuoteIndex];
+    currentQuoteIndex = newQuoteIndex;
 
     // Remove fade-out and add fade-in
     imgElement.classList.remove("fade-out");
-    poemElement.classList.remove("fade-out");
+    quoteElement.classList.remove("fade-out");
     imgElement.classList.add("fade-in");
-    poemElement.classList.add("fade-in");
+    quoteElement.classList.add("fade-in");
 
     // Remove fade-in class after transition completes
     setTimeout(() => {
       imgElement.classList.remove("fade-in");
-      poemElement.classList.remove("fade-in");
+      quoteElement.classList.remove("fade-in");
     }, 500); // Duration matches the CSS transition duration
   }, 500); // Duration matches the CSS transition duration
 }
@@ -182,9 +181,19 @@ function getAltText(index) {
   const descriptions = [
     "Mushroom in a forest setting",
     "Dense forest with towering trees",
-    "Serene lake reflecting the sky",
-    "Majestic mountain under a clear blue sky",
-    "Sunset over a tranquil landscape",
+    "Serene lake reflecting the sunrise",
+    "Calm water at the lake",
+    "Autumn trees with falling leaves",
+    "Pink cherry blossoms in bloom",
+    "Mountain meadow in the Alps",
+    "Majestic Alps mountains",
+    "Lake Thun with surrounding mountains",
+    "Grass with dewdrops in the morning",
+    "Snow-covered forest in winter",
+    "Chamomile flowers in full bloom",
+    "Sunrise over a grassy field",
+    "Waves crashing on the beach",
+    "Avenue of trees along a path",
     // Add more descriptions corresponding to images
   ];
 
@@ -194,23 +203,55 @@ function getAltText(index) {
 // Event listener for the randomize button
 document
   .getElementById("randomizeBtn")
-  .addEventListener("click", showRandomPhotoPoem);
+  .addEventListener("click", showRandomPhotoQuote);
 
+// Event listener for the save favorite button
 document
-  .getElementById("poetryForm")
+  .getElementById("saveFavoriteBtn")
+  .addEventListener("click", function () {
+    const imgSrc = document.getElementById("randomImage").src;
+    const quote = document.getElementById("quoteText").textContent;
+
+    // Get favorites from localStorage or initialize
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    // Check for duplicates
+    const isDuplicate = favorites.some(
+      (favorite) => favorite.image === imgSrc && favorite.quote === quote
+    );
+
+    if (!isDuplicate) {
+      // Add new favorite
+      favorites.push({ image: imgSrc, quote: quote });
+
+      // Save back to localStorage
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+
+      alert("Favorite saved!");
+    } else {
+      alert("This favorite is already saved!");
+    }
+  });
+
+// Event listener for the quotes form
+document
+  .getElementById("quotesForm")
   .addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent the default form submission
 
-    const poemInput = document.getElementById("poemInput");
-    const submittedPoemsContainer = document.getElementById("submittedPoems");
+    const quoteInput = document.getElementById("quoteInput");
+    const submittedQuotesContainer = document.getElementById("submittedQuotes");
 
-    // Create a new paragraph for the submitted poem
-    const newPoem = document.createElement("p");
-    newPoem.textContent = poemInput.value;
+    // Create a new paragraph for the submitted quote
+    const newQuote = document.createElement("p");
+    newQuote.textContent = quoteInput.value;
 
-    // Add the new poem to the submitted poems section
-    submittedPoemsContainer.appendChild(newPoem);
+    // Optionally, add a class for styling
+    newQuote.classList.add("user-quote");
+
+    // Add the new quote to the submitted quotes section
+    submittedQuotesContainer.appendChild(newQuote);
 
     // Clear the textarea for new input
-    poemInput.value = "";
+    quoteInput.value = "";
   });
