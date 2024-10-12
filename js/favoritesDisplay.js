@@ -26,10 +26,10 @@ function loadFavorites() {
     img.width = 300; // Adjust as needed
     pairDiv.appendChild(img);
 
-    // Create and append the poem
-    const poem = document.createElement("p");
-    poem.textContent = pair.poem;
-    pairDiv.appendChild(poem);
+    // Create and append the quote
+    const quote = document.createElement("p");
+    quote.textContent = pair.quote;
+    pairDiv.appendChild(quote);
 
     // Append the pair to the favorites container
     favoritesContainer.appendChild(pairDiv);
@@ -40,7 +40,9 @@ function loadFavorites() {
 function clearFavorites() {
   if (confirm("Are you sure you want to clear all favorites?")) {
     localStorage.removeItem("favorites");
-    location.reload(); // Reload the page to update the display
+    const favoritesContainer = document.getElementById("favoritesContainer");
+    favoritesContainer.innerHTML =
+      "<p>You have no favorite pairs saved yet.</p>"; // Update the display
   }
 }
 

@@ -3,15 +3,26 @@
 // Function to save the current pair to favorites
 function saveFavorite() {
   const imgElement = document.getElementById("randomImage");
-  const poemElement = document.getElementById("poemText");
+  const quoteElement = document.getElementById("quoteText");
 
   const favoritePair = {
     image: imgElement.src,
-    poem: poemElement.textContent,
+    quote: quoteElement.textContent,
   };
 
   // Retrieve existing favorites from local storage, or initialize an empty array
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  // Check if the favorite pair already exists
+  const isDuplicate = favorites.some(
+    (pair) =>
+      pair.image === favoritePair.image && pair.quote === favoritePair.quote
+  );
+
+  if (isDuplicate) {
+    alert("This favorite is already saved!");
+    return; // Exit the function if it's a duplicate
+  }
 
   // Add the new favorite pair
   favorites.push(favoritePair);
